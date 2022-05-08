@@ -72,7 +72,7 @@ if (( ${+ICE[lbin]} )) {
  
       srcdst=( ${(@s.->.)lbin} )
       +zinit-message "{pre}linkbin: {info} srcdst value #1: {glob}$srcdst[@]{info}{rst}"
-      srcdst=(${(MS)srcdst[@]##[[:graph:]]*[[:graph:]]})
+      srcdst=( "${srcdst[@]//((?#s)[[:space:]](?#e)##)/}" )
       +zinit-message "{pre}linkbin: {info} srcdst value #2: {glob}$srcdst[@]{info}{rst}"
 
       @zinit-substitute "srcdst[1]" "srcdst[2]"
